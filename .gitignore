@@ -34,3 +34,8 @@ build/
 
 ### ENV File ###
 .env
+
+#Maven Wrapper
+mvnw
+mvnw.cmd
+.mvn
