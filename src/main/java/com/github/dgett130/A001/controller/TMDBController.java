@@ -73,6 +73,20 @@ public class TMDBController {
 
     }
 
+    @GetMapping("/movies/{id}")
+    public ResponseEntity<String> getMovieData(@PathVariable("id") String movieId) {
+
+        String url = "https://api.themoviedb.org/3/movie/"+ movieId +"?api_key=" + tmdbConfig.getApiKey() + "&language=en-US&page=1";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", "application/json");
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(headers);
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, requestEntity, String.class);
+
+        return response;
+    }
+
 
 
 }
